@@ -38,8 +38,8 @@ class InlineStuffMod(loader.Module):
             " already occupied</b>"
         ),
         "bot_updated": (
-            "<emoji document_id=6318792204118656433>🎉</emoji> <b>Config successfully"
-            " saved. Restart userbot to apply changes</b>"
+            "<emoji document_id=6318792204118656433>🎉</emoji> <b>Tayyor brat!))"
+            " Bitta restart bersangiz zoʻr boʻb ketadi</b>"
         ),
         "this_is_thom": (
             "💌 <b>Thom</b> - userbot maxsuli sanaladi."
@@ -60,7 +60,7 @@ class InlineStuffMod(loader.Module):
             " занят</b>"
         ),
         "bot_updated": (
-            "<emoji document_id=6318792204118656433>🎉</emoji> <b>Настройки сохранены."
+            "<emoji document_id=6318792204118656433>🎉</emoji> <b>Готов братик!))"
             " Для их применения нужно перезагрузить юзербот</b>"
         ),
         "this_is_thom": (
@@ -137,8 +137,8 @@ class InlineStuffMod(loader.Module):
                     return True
 
     @loader.command(ru_doc="<юзернейм> - Изменить юзернейм инлайн бота")
-    async def ch_thom_bot(self, message: Message):
-        """<username> - Change your Thom inline bot username"""
+    async def newbot(self, message: Message):
+        """<yuzerneym> - Yangi inline bot yaratish"""
         args = utils.get_args_raw(message).strip("@")
         if (
             not args
