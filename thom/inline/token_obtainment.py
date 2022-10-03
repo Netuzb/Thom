@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 photo = io.BytesIO(
     requests.get(
-        "https://github.com/Netuzb/Thom/raw/master/assets/bot_pfp.png"
+        "https://te.legra.ph/file/e0573822d65dac21044ae.jpg"
     ).content
 )
 photo.name = "avatar.png"
@@ -63,7 +63,7 @@ class TokenObtainment(InlineUnit):
                 username = f"@thom_{uid}_bot"
 
             for msg in [
-                f"🌘 Thom Userbot of {self._name}"[:64],
+                f"💌 {self._name}"[:64],
                 username,
                 "/setuserpic",
                 username,
