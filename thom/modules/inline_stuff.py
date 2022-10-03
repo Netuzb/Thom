@@ -34,8 +34,8 @@ class InlineStuffMod(loader.Module):
             " at least 4 symbols</b>"
         ),
         "bot_username_occupied": (
-            "<emoji document_id=5415905755406539934>🚫</emoji> <b>This username is"
-            " already occupied</b>"
+            "<emoji document_id=5415905755406539934>🚫</emoji> <b>Oka! Bu yuzerbot"
+            " band ekan-ku.</b>"
         ),
         "bot_updated": (
             "<emoji document_id=6318792204118656433>🎉</emoji> <b>Tayyor brat!))"
@@ -170,6 +170,6 @@ class InlineStuffMod(loader.Module):
             return
 
         await message.answer_photo(
-            "https://te.legra.ph/file/e0573822d65dac21044ae.jpg",
+            "https://te.legra.ph/file/aaa7bc16209157e7aa3c9.jpg",
             caption=self.strings("this_is_thom"),
         )
