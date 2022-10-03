@@ -26,22 +26,22 @@ class ThomInfoMod(loader.Module):
 
     strings = {
         "name": "ThomInfo",
-        "owner": "Owner",
+        "owner": "Asoschi",
         "version": "Version",
         "build": "Build",
         "prefix": "Prefix",
         "uptime": "Uptime",
         "branch": "Branch",
-        "send_info": "Send userbot info",
-        "description": "ℹ This will not compromise any sensitive info",
-        "up-to-date": "<b>😌 Up-to-date</b>",
-        "update_required": "<b>😕 Update required </b><code>.update</code>",
+        "send_info": "Thom’ boʻyicha maʼlumot",
+        "description": "👀 Bo‘tta faqat Thom haqida maʼlumot boʻladi",
+        "up-to-date": "<b>😎 Sizda uje barqaror versiya</b>",
+        "update_required": "<b>😕 Brat! Yangilavoling, eskisida oʻtiribsiz: </b><code>.update</code>",
         "_cfg_cst_msg": (
-            "Custom message for info. May contain {me}, {version}, {build}, {prefix},"
-            " {platform}, {upd}, {uptime}, {branch} keywords"
+            "Karoche, maxsus yutillar: {me}, {version}, {build}, {prefix},"
+            " {platform}, {upd}, {uptime}, {branch}"
         ),
-        "_cfg_cst_btn": "Custom button for info. Leave empty to remove button",
-        "_cfg_banner": "URL to image banner",
+        "_cfg_cst_btn": "Tugmachani yozuvi hamda havolasini vergul bilan ajratib yozish kere, oka.",
+        "_cfg_banner": "Banner uchun havola kere",
     }
 
     strings_ru = {
@@ -74,7 +74,7 @@ class ThomInfoMod(loader.Module):
             ),
             loader.ConfigValue(
                 "custom_button",
-                ["🌘 Support chat", "https://t.me/thom_talks"],
+                ["💌 UMod fed.", "https://t.me/umodules"],
                 lambda: self.strings("_cfg_cst_btn"),
                 validator=loader.validators.Union(
                     loader.validators.Series(fixed_len=2),
@@ -83,7 +83,7 @@ class ThomInfoMod(loader.Module):
             ),
             loader.ConfigValue(
                 "banner_url",
-                "https://github.com/hikariatama/assets/raw/master/hikka_banner.png",
+                "https://te.legra.ph/file/aaa7bc16209157e7aa3c9.jpg",
                 lambda: self.strings("_cfg_banner"),
                 validator=loader.validators.Link(),
             ),
@@ -113,7 +113,7 @@ class ThomInfoMod(loader.Module):
 
         return (
             (
-                "<b>🌘 Thom</b>\n"
+                "<b>🌘 Thom</b> userbot\n"
                 if "thom" not in self.config["custom_message"].lower()
                 else ""
             )
@@ -129,7 +129,7 @@ class ThomInfoMod(loader.Module):
             )
             if self.config["custom_message"]
             else (
-                "<b>🌘 Thom</b>\n"
+                "<b>🌘 Thom</b> userbot\n"
                 f'<b>🤴 {self.strings("owner")}: </b>{me}\n\n'
                 f"<b>🔮 {self.strings('version')}: </b>{_version} {build}\n"
                 f"<b>🌳 {self.strings('branch')}: </b><code>{version.branch}</code>\n"
@@ -159,7 +159,7 @@ class ThomInfoMod(loader.Module):
             "description": self.strings("description"),
             "message": self._render_info(),
             "thumb": (
-                "https://github.com/hikariatama/Hikka/raw/master/assets/hikka_pfp.png"
+                "https://te.legra.ph/file/6c9471456effd1bd018b0.jpg"
             ),
             "reply_markup": self._get_mark(),
         }
