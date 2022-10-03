@@ -64,7 +64,10 @@ class InlineStuffMod(loader.Module):
             " Для их применения нужно перезагрузить юзербот</b>"
         ),
         "this_is_thom": (
-            "💌 <b>Thom</b> userboti maxsuli sanaladi. Agarda sizni qiziqtirsa <a href='https://t.me/netuzb'>rasmiy manba</a>dan oʻrnatish qoʻllanmasini koʻrishingiz mumkin. 😎'
+            "💌 <b>Thom</b> userboti maxsuli sanaladi."
+            " Agarda sizni qiziqtirsa <a href='https://t.me/netuzb'>"
+            "rasmiy manba</a>dan oʻrnatish qoʻllanmasin"
+            " koʻrishingiz mumkin. 😎"
         ),
     }
 
