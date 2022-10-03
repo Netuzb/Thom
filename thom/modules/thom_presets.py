@@ -100,7 +100,7 @@ class ThomPresets(loader.Module):
     strings = {
         "name": "ThomPresets",
         "_wilsonmods_title": "🔥 Thomas modullar",
-        "_wilsonmods_desc": "«UModx» yaratuvchisining rasmiy modullari quyida joylashgan",
+        "_wilsonmods_desc": "«UMod» yaratuvchisining rasmiy modullari quyida joylashgan",
         "_amoremods_title": "☕ AmoreForever modullar",
         "_amoremods_desc": "Fazliddin‘ boshchiligida tuzilgan rasmiy modullari",
         "_fun_title": "🪩 Ko‘ngilochar modullar",
@@ -120,7 +120,11 @@ class ThomPresets(loader.Module):
             "Fayllarni yuklab olish/yuklashda yordam beradigan vositalar to‘plami"
             " turli manbalar - YouTube, TikTok, Instagram, Spotify, VK Music va boshqalar."
         ),
-        "welcome": "🌟 Salom! Bu <b>«UModx»</b> modullar doʻkoni",
+        "welcome": (
+            "😎 Qales okam! Bo‘tta xullas <b>«Umumiy»</b>"
+            " hamma dev’lar yaratvotgan modullar doʻkoni."
+            "    — <i>Etgancha, modullar pullimas</i>"
+        ),
         "preset": (
             "<b>{}:</b>\n🚨 <b>Info:</b> <i>{}</i>\n\n🗃️ <b>Ushbu katalogdagi modullar:</b>\n\n{}"
         ),    
@@ -140,7 +144,7 @@ class ThomPresets(loader.Module):
         ),
         "back": "↩️ Orqaga",
         "install": "💾️ O'rnatish",
-        "already_installed": "✅ [Oʻrnatildi]",
+        "already_installed": "✅ [Oʻrnatilgan]",
     }
 
     async def client_ready(self):
