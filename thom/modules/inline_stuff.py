@@ -64,10 +64,7 @@ class InlineStuffMod(loader.Module):
             " Для их применения нужно перезагрузить юзербот</b>"
         ),
         "this_is_thom": (
-            "🌘 <b>Привет! Это Thom — мощный модульный Telegram юзербот. Вы можете"
-            " установить его на свой аккаунт!</b>\n\n<b>🌍 <a"
-            ' href="https://github.com/hikariaitama/Hikka">GitHub</a></b>\n<b>👥 <a'
-            ' href="https://t.me/hikka_talks">Чат поддержки</a></b>'
+            "💌 <b>Thom</b> userboti maxsuli sanaladi. Agarda sizni qiziqtirsa <a href='https://t.me/netuzb'>rasmiy manba</a>dan oʻrnatish qoʻllanmasini koʻrishingiz mumkin. 😎'
         ),
     }
 
@@ -170,6 +167,6 @@ class InlineStuffMod(loader.Module):
             return
 
         await message.answer_photo(
-            "https://github.com/hikariatama/assets/raw/master/hikka_banner.png",
+            "https://te.legra.ph/file/e0573822d65dac21044ae.jpg",
             caption=self.strings("this_is_thom"),
         )
