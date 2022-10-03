@@ -1,46 +1,25 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
-# scope: inline
-
 import asyncio
 import contextlib
 import logging
 from typing import Union
-
 import git
-
-from .. import loader, utils, version
+from .. import loader, utils
 from ..inline.types import InlineCall
-
-logger = logging.getLogger(__name__)
-
 
 @loader.tds
 class UpdateNotifierMod(loader.Module):
-    """Tracks latest Thom releases, and notifies you, if update is required"""
+    """Yangilanish"""
 
     strings = {
-        "name": "UpdateNotifier",
+        "name": "UpdateNotifer",
         "update_required": (
-            "🌘 <b>Thom Update available!</b>\n\nNew Thom version released.\n🔮"
-            " <b>Thom <s>{}</s> -> {}</b>\n\n{}"
+            "🌟 <b>Thom yangilandi!</b>\n"
+            "  – Yangilab olishni tavsiya qilaman ))\n\n"
+            "- Yangi Thom versiyasi.\n🔮"
+            " <b>Thom <s>{}</s> » {}</b>\n\n{}"
         ),
-        "more": "\n<i><b>🎥 And {} more...</b></i>",
-    }
-
-    strings_ru = {
-        "update_required": (
-            "🌘 <b>Доступно обновление Thom!</b>\n\nОпубликована новая версия Thom.\n🔮"
-            " <b>Thom <s>{}</s> -> {}</b>\n\n{}"
-        ),
-        "more": "\n<i><b>🎥 И еще {}...</b></i>",
-    }
+        "more": "\n<i><b>☕ Va {}...</b></i>",
+    }   
 
     _notified = None
 
@@ -66,9 +45,7 @@ class UpdateNotifierMod(loader.Module):
             for remote in repo.remotes:
                 remote.fetch()
 
-            if not (
-                diff := repo.git.log([f"HEAD..origin/{version.branch}", "--oneline"])
-            ):
+            if not (diff := repo.git.log(["HEAD..origin/main", "--oneline"])):
                 return False
         except Exception:
             return False
@@ -86,9 +63,7 @@ class UpdateNotifierMod(loader.Module):
 
     def get_latest(self) -> str:
         try:
-            return list(
-                git.Repo().iter_commits(f"origin/{version.branch}", max_count=1)
-            )[0].hexsha
+            return list(git.Repo().iter_commits("origin/main", max_count=1))[0].hexsha
         except Exception:
             return ""
 
@@ -99,9 +74,11 @@ class UpdateNotifierMod(loader.Module):
             raise loader.LoadError("Can't load due to repo init error") from e
 
         self._markup = self.inline.generate_markup(
-            [
-                {"text": "🔄 Update", "data": "thom_update"},
-                {"text": "🚫 Ignore", "data": "thom_upd_ignore"},
+                [
+                  
+                 {"text": "🔥 Yangilash", "data": "thom_update"},
+                 {"text": "🚫 Kerakmas", "data": "thom_upd_ignore"}
+                 
             ]
         )
 
@@ -155,8 +132,8 @@ class UpdateNotifierMod(loader.Module):
             return
 
         if call.data == "thom_upd_ignore":
-            self.set("ignore_permanent", self.get_latest())
-            await call.answer("Notifications about the latest have been suppressed")
+            self.set("ignore_permanent", self._pending)
+            await call.answer("Notifications about this update have been suppressed")
             return
 
         await self._delete_all_upd_messages()
