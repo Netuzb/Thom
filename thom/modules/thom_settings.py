@@ -418,7 +418,7 @@ class ThomSettingsMod(loader.Module):
         await utils.answer(message, self.strings("logs_cleared"))
 				
 				@loader.command(ru_doc="Быстро удаление")
-    async def purge(self, message):
+    async def purgecmd(self, message):
         """Barcha habarlarni oʻchirish"""
         if not message.is_reply:
             await utils.answer(message, self.strings("from_where", message))
@@ -466,7 +466,7 @@ class ThomSettingsMod(loader.Module):
         await self.allmodules.log("purge", group=message.to_id, affected_uids=from_ids)
 				
 				@loader.command(ru_doc="Удаление сообщения")
-    async def del(self, message):
+    async def delcmd(self, message):
         """Habarni oʻchirish"""
         msgs = [message.id]
         if not message.is_reply:
