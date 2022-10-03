@@ -65,7 +65,7 @@ class LoaderMod(loader.Module):
         "name": "Loader",
         "repo_config_doc": "URL to a module repo",
         "avail_header": (
-            "<emoji document_id=6321352876505434037>🎢</emoji><b> Modules from repo</b>"
+            "<emoji document_id=6321352876505434037>🎢</emoji><b> Repository’dagi barcha modullar:</b>"
         ),
         "select_preset": "<b>⚠️ Please select a preset</b>",
         "no_preset": (
@@ -414,6 +414,7 @@ class LoaderMod(loader.Module):
                 # Currenly the trusted developers are specified
                 [
                     "https://github.com/hikariatama/host/raw/master",
+                    "https://github.com/thomasmod/hikkamods/raw/main",
                     "https://github.com/MoriSummerz/ftg-mods/raw/main",
                     "https://gitlab.com/CakesTwix/friendly-userbot-modules/-/raw/master",
                 ],
@@ -521,7 +522,7 @@ class LoaderMod(loader.Module):
                 message,
                 [
                     self.strings("avail_header")
-                    + f"\n☁️ {repo.strip('/')}\n\n"
+                    + f"\n💌 <b>Repo nomi:</b> {repo.strip('/')}\n\n"
                     + "\n".join(
                         [
                             " | ".join(chunk)
