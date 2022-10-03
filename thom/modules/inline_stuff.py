@@ -29,9 +29,9 @@ class InlineStuffMod(loader.Module):
     strings = {
         "name": "InlineStuff",
         "bot_username_invalid": (
-            "<emoji document_id=5415905755406539934>🚫</emoji> <b>Specified bot"
-            " username is invalid. It must end with </b><code>bot</code><b> and contain"
-            " at least 4 symbols</b>"
+            "<emoji document_id=5415905755406539934>🚫</emoji> <b>Brat! Neto qivossizu."
+            " Karoche, oxirida </b><code>bot</code><b> bilan yakunlanishi kere, keyin"
+            " 4 simvoldan koʻpro boʻsin.</b>"
         ),
         "bot_username_occupied": (
             "<emoji document_id=5415905755406539934>🚫</emoji> <b>Oka! Bu yuzerbot"
@@ -44,7 +44,7 @@ class InlineStuffMod(loader.Module):
         "this_is_thom": (
             "💌 <b>Thom</b> - userbot maxsuli sanaladi."
             " Agarda sizni qiziqtirsa <a href='https://t.me/netuzb'>"
-            "rasmiy manba</a>dan oʻrnatish qoʻllanmasin"
+            "rasmiy manba</a>dan oʻrnatish qoʻllanmasini"
             " koʻrishingiz mumkin. 😎"
         ),
     }
