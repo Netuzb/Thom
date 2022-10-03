@@ -122,7 +122,7 @@ class ThomPresets(loader.Module):
         ),
         "welcome": (
             "😎 Qales okam! Bo‘tta xullas <b>«Umumiy»</b>"
-            " hamma dev’lar yaratvotgan modullar doʻkoni."
+            " hamma dev’lar yaratvotgan modullar doʻkoni.\n"
             "    — <i>Etgancha, modullar pullimas</i>"
         ),
         "preset": (
