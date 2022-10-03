@@ -42,7 +42,7 @@ class InlineStuffMod(loader.Module):
             " saved. Restart userbot to apply changes</b>"
         ),
         "this_is_thom": (
-            "💌 <b>Thom</b> userboti maxsuli sanaladi."
+            "💌 <b>Thom</b> - userbot maxsuli sanaladi."
             " Agarda sizni qiziqtirsa <a href='https://t.me/netuzb'>"
             "rasmiy manba</a>dan oʻrnatish qoʻllanmasin"
             " koʻrishingiz mumkin. 😎"
@@ -63,8 +63,8 @@ class InlineStuffMod(loader.Module):
             "<emoji document_id=6318792204118656433>🎉</emoji> <b>Настройки сохранены."
             " Для их применения нужно перезагрузить юзербот</b>"
         ),
-        "this_is_thom: (
-             "💌 Юзербот <b>Тома</b> считается продуктом."
+        "this_is_thom": (
+             "💌 <b>Thom</b> - актуальный источник юзербота."
              " Если вам интересно <a href='https://t.me/netuzb'>"
              "руководство по установке</a> из официального источника,"
              " то можете заглянуть. 😎"
