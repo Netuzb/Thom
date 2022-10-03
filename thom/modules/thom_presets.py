@@ -1,21 +1,37 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒 Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import asyncio
 import logging
-
 from ..inline.types import InlineCall, BotInlineMessage
 from .. import loader, utils
 
-logger = logging.getLogger(__name__)
-
 
 PRESETS = {
+    "wilsonmods": [
+        "https://github.com/thomasmod/hikkamods/raw/main/cdeanon.py",
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/atelegraph.py",
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/cmovies.py",
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/cchid.py",
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/crename.py",
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/ctiktok.py",
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/cuploader.py",
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/kursinfo.py",        
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/mydiary.py",
+    ],
+    "amoremods": [
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/abstract.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/amoreinfo.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/autoprofile.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/animevoices.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/bull.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/createlinks.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/funquotes.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/hacker.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/imgbb.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/instsave.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/meowvoices.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/mydiary.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/searchpic.py",
+        "https://raw.githubusercontent.com/AmoreForever/amoremods/master/telegraphup.py",
+    ],
     "fun": [
         "https://mods.hikariatama.ru/aniquotes.py",
         "https://mods.hikariatama.ru/artai.py",
@@ -67,112 +83,64 @@ PRESETS = {
         "https://heta.hikariatama.ru/vsecoder/hikka_modules/accounttime.py",
         "https://heta.hikariatama.ru/vsecoder/hikka_modules/searx.py",
         "https://heta.hikariatama.ru/iamnalinor/FTG-modules/swmute.py",
-    ],
-    "downloaders": [
         "https://mods.hikariatama.ru/musicdl.py",
-        "https://mods.hikariatama.ru/uploader.py",
         "https://mods.hikariatama.ru/porn.py",
         "https://mods.hikariatama.ru/web2file.py",
-        "https://heta.hikariatama.ru/AmoreForever/amoremods/instsave.py",
         "https://heta.hikariatama.ru/CakesTwix/Hikka-Modules/tikcock.py",
         "https://heta.hikariatama.ru/CakesTwix/Hikka-Modules/InlineYouTube.py",
         "https://heta.hikariatama.ru/CakesTwix/Hikka-Modules/InlineSpotifyDownloader.py",
-        "https://heta.hikariatama.ru/GeekTG/FTG-Modules/downloader.py",
         "https://heta.hikariatama.ru/Den4ikSuperOstryyPer4ik/Astro-modules/dl_yt_previews.py",
     ],
 }
 
-
 @loader.tds
-class Presets(loader.Module):
-    """Suggests new Thom users a packs of modules to load"""
+class ThomPresets(loader.Module):
+    """Modullar jamlangan bepul doʻkon"""
 
     strings = {
-        "name": "Presets",
-        "_fun_title": "🪩 Entertainment modules",
-        "_fun_desc": "Fun modules — animations, spam, entertainment, etc.",
-        "_chat_title": "👥 Group Administration Helpers",
+        "name": "ThomPresets",
+        "_wilsonmods_title": "🔥 Thomas modullar",
+        "_wilsonmods_desc": "«UModx» yaratuvchisining rasmiy modullari quyida joylashgan",
+        "_amoremods_title": "☕ AmoreForever modullar",
+        "_amoremods_desc": "Fazliddin‘ boshchiligida tuzilgan rasmiy modullari",
+        "_fun_title": "🪩 Ko‘ngilochar modullar",
+        "_fun_desc": "Qiziqarli modullar - animatsiyalar, spam, o‘yin-kulgi va boshqalar.",
+        "_chat_title": "👥 Guruh ma‘muriyati yordamchilari",
         "_chat_desc": (
-            "The collection of tools which will help to moderate your group chat —"
-            " filters, notes, voice recognition, etc."
+            "Guruhingizni boshqarishga yordam beradigan vositalar to‘plamlar —"
+            " filtrlar, eslatmalar, ovozni aniqlash va boshqalar."
         ),
-        "_service_title": "⚙️ Useful modules",
+        "_service_title": "⚙️ Foydali modullar",
         "_service_desc": (
-            "Really useful modules — account management, link shortener, search engine,"
-            " etc."
+            "Haqiqatan ham foydali modullar — hisobni boshqarish, havolani qisqartiruvchi, qidiruv tizimi,"
+            " va boshqalar."
         ),
-        "_downloaders_title": "📥 Downloaders",
+        "_downloaders_title": "📥 Yuklab oluvchilar",
         "_downloaders_desc": (
-            "The collection of tools which will help you download/upload files from/to"
-            " different sources — YouTube, TikTok, Instagram, Spotify, VK Music, etc."
+            "Fayllarni yuklab olish/yuklashda yordam beradigan vositalar to‘plami"
+            " turli manbalar - YouTube, TikTok, Instagram, Spotify, VK Music va boshqalar."
         ),
-        "welcome": (
-            "👋 <b>Hi there! Tired of scrolling through endless modules in channels? Let"
-            " me suggest you some pre-made collections. If you need to call this menu"
-            " again, simply send /presets to this bot!</b>"
-        ),
+        "welcome": "🌟 Salom! Bu <b>«UModx»</b> modullar doʻkoni",
         "preset": (
-            "<b>{}:</b>\nℹ️ <i>{}</i>\n\n⚒ <b>Modules in this collection:</b>\n\n{}"
-        ),
-        "back": "🔙 Back",
-        "install": "📦 Install",
+            "<b>{}:</b>\n🚨 <b>Info:</b> <i>{}</i>\n\n🗃️ <b>Ushbu katalogdagi modullar:</b>\n\n{}"
+        ),    
         "installing": (
-            "<emoji document_id=5451732530048802485>⏳</emoji> <b>Installing preset"
-            " </b><code>{}</code><b>...</b>"
+            "<emoji document_id='5451732530048802485'>⏳</emoji> <b>Hozirgi vaqtda"
+            " </b><code>{}</code> modullari o'rnatilmoqda <b>...</b>"
         ),
         "installing_module": (
-            "<emoji document_id=5451732530048802485>⏳</emoji> <b>Installing preset"
-            " </b><code>{}</code><b> ({}/{} modules)...</b>\n\n<emoji"
-            " document_id=5188377234380954537>🌘</emoji> <i>Installing module"
+            "<emoji document_id='5451732530048802485'>⏳</emoji> <b>Hozirgi vaqtda..."
+            " </b><code>{}</code><b> ({}/{} modul oʻrnatildi)...</b>\n\n<emoji"
+            " document_id='5235816140302721259'>👑</emoji> <i>"
             " {}...</i>"
         ),
         "installed": (
-            "<emoji document_id=5436040291507247633>🎉</emoji> <b>Preset"
-            " </b><code>{}</code><b> installed!</b>"
+            "<emoji document_id='5235816140302721259'>👑</emoji> <b>Barcha"
+            " </b><code>{}</code><b> modullari oʻrnatildi!</b>"
         ),
-        "already_installed": "✅ [Installed]",
-    }
-
-    strings_ru = {
-        "_fun_title": "🪩 Развлекательные модули",
-        "_fun_desc": "Забавные модули — анимации, спам, игры, и др.",
-        "_chat_title": "👥 Модули администрирования чата",
-        "_chat_desc": (
-            "Коллекция модулей, которые помогут вам администрировать чат — фильтры,"
-            " заметки, распознавание речи, и др."
-        ),
-        "_service_title": "⚙️ Полезные модули",
-        "_service_desc": (
-            "Действительно полезные модули — управление аккаунтом, сократитель ссылок,"
-            " поисковик, и др."
-        ),
-        "_downloaders_title": "📥 Загрузчики",
-        "_downloaders_desc": (
-            "Коллекция модулей, которые помогут вам загружать файлы в/из различных(-е)"
-            " источников(-и) — YouTube, TikTok, Instagram, Spotify, VK Музыка, и др."
-        ),
-        "welcome": (
-            "👋 <b>Привет! Устал листать бесчисленное количество модулей в каналах? Могу"
-            " предложить тебе несколько готовых наборов. Если тебе понадобится повторно"
-            " вызвать это меню, отправь мне команду /presets</b>"
-        ),
-        "preset": "<b>{}:</b>\nℹ️ <i>{}</i>\n\n⚒ <b>Модули в этом наборе:</b>\n\n{}",
-        "back": "🔙 Назад",
-        "install": "📦 Установить",
-        "installing": (
-            "<emoji document_id=5451732530048802485>⏳</emoji> <b>Установка набора"
-            " >/b><code>{}</code><b>...</b>"
-        ),
-        "installing_module": (
-            "<emoji document_id=5451732530048802485>⏳</emoji> <b>Установка набора"
-            " </b><code>{}</code><b> ({}/{} модулей)...</b>\n\n<emoji"
-            " document_id=5188377234380954537>🌘</emoji> <i>Установка модуля {}...</i>"
-        ),
-        "installed": (
-            "<emoji document_id=5436040291507247633>🎉</emoji> <b>Набор"
-            " </b><code>{}</code><b> установлен!</b>"
-        ),
-        "already_installed": "✅ [Установлен]",
+        "back": "↩️ Orqaga",
+        "install": "💾️ O'rnatish",
+        "already_installed": "✅ [Oʻrnatildi]",
     }
 
     async def client_ready(self):
@@ -264,7 +232,7 @@ class Presets(loader.Module):
         )
 
     async def aiogram_watcher(self, message: BotInlineMessage):
-        if message.text != "/presets" or message.from_user.id != self._client.tg_id:
+        if message.text != "/modullar" or message.from_user.id != self._client.tg_id:
             return
 
         await self._menu()
