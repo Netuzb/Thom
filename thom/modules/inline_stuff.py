@@ -42,10 +42,10 @@ class InlineStuffMod(loader.Module):
             " saved. Restart userbot to apply changes</b>"
         ),
         "this_is_thom": (
-            "🌘 <b>Hi! This is Hikka — powerful modular Telegram userbot. You can"
-            " install it to your account!</b>\n\n<b>🌍 <a"
-            ' href="https://github.com/hikaraitama/Thom">GitHub</a></b>\n<b>👥 <a'
-            ' href="https://t.me/hikka_talks">Support chat</a></b>'
+            "💌 <b>Thom</b> userboti maxsuli sanaladi."
+            " Agarda sizni qiziqtirsa <a href='https://t.me/netuzb'>"
+            "rasmiy manba</a>dan oʻrnatish qoʻllanmasin"
+            " koʻrishingiz mumkin. 😎"
         ),
     }
 
@@ -63,12 +63,12 @@ class InlineStuffMod(loader.Module):
             "<emoji document_id=6318792204118656433>🎉</emoji> <b>Настройки сохранены."
             " Для их применения нужно перезагрузить юзербот</b>"
         ),
-        "this_is_thom": (
-            "💌 <b>Thom</b> userboti maxsuli sanaladi."
-            " Agarda sizni qiziqtirsa <a href='https://t.me/netuzb'>"
-            "rasmiy manba</a>dan oʻrnatish qoʻllanmasin"
-            " koʻrishingiz mumkin. 😎"
-        ),
+        "this_is_thom: (
+             "💌 Юзербот <b>Тома</b> считается продуктом."
+             " Если вам интересно <a href='https://t.me/netuzb'>"
+             "руководство по установке</a> из официального источника,"
+             " то можете заглянуть. 😎"
+         ),
     }
 
     async def watcher(self, message: Message):
