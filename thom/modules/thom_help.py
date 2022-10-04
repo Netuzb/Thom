@@ -15,8 +15,25 @@ class MHelpMod(loader.Module):
     """Thom uchun maxsus yaratilgan MHelp moduli <3"""
 
     strings = {
-        "name": "Info",
-        "bad_module": "<b>🚫 <b>Module</b> <code>{}</code> <b>not found</b>",
+        "name": "Infomods",
+        "bad_module": "<b>🚫 <b>Modul</b> <code>{}</code> <b>topilmadi</b>",
+        "single_mod_header": "🌄 <b>Module name:</b> {}",
+        "single_cmd": "\n🌄 <b>«{}{}»</b> {}",
+        "undoc_cmd": "🦥 No docs",
+        "all_header": "🌉 <b>«{}» module(s) available, «{}» hidden:</b>\n<i>— Above is the number of common modules you have and the number of blocked ones</i>",
+        "mod_tmpl": "\n{} <b>«{}»</b>",
+        "first_cmd_tmpl": " «{}»",
+        "cmd_tmpl": " «{}»",
+        "no_mod": "🚫 <b>Specify module to hide</b>",
+        "hidden_shown": "🌉 <b>«{}» modul(lar) koʻrsatildi, «{}» berkitildi:</b>\n{}\n{}",
+        "ihandler": "\n✿ <code>{}</code> {}",
+        "undoc_ihandler": "🦥 No docs",
+        "partial_load": "⚠️ <b>Userbot is not fully loaded, so not all modules are shown</b>",
+        "not_exact": "⚠️ <b>No exact match occured, so the closest result is shown instead</b>",
+    }
+
+    strings_ru = {
+        "bad_module": "<b>🚫 <b>Модуль</b> <code>{}</code> <b>не найдено.<b>",
         "single_mod_header": "🌄 <b>Module name:</b> {}",
         "single_cmd": "\n🌄 <b>«{}{}»</b> {}",
         "undoc_cmd": "🦥 No docs",
@@ -36,25 +53,25 @@ class MHelpMod(loader.Module):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
                 "core_emoji",
-                "🌄",
+                "—",
                 lambda: "Core module bullet",
                 validator=loader.validators.String(length=1),
             ),
             loader.ConfigValue(
                 "thom_emoji",
-                "🌄",
+                "—",
                 lambda: "thom-only module bullet",
                 validator=loader.validators.String(length=1),
             ),
             loader.ConfigValue(
                 "plain_emoji",
-                "🌄",
+                "—",
                 lambda: "Plain module bullet",
                 validator=loader.validators.String(length=1),
             ),
             loader.ConfigValue(
                 "empty_emoji",
-                "🌄",
+                "—",
                 lambda: "Empty modules bullet",
                 validator=loader.validators.String(length=1),
             ),
@@ -319,8 +336,8 @@ class MHelpMod(loader.Module):
             else ""
         )
 
-        umod_turn = f"\n\n🌉 <b>This is not a public «Help» module</b>"
-        um_tn = "\n<i>— Contact the creator of «Thomas» to become a «Premium» user!</i>"
+        umod_turn = f"\n\n🌉 <b>1.4.2 modification oʻrnida qabul qilamiza.</b>"
+        um_tn = "\n<i>— Never gonna give you up...</i>"
         await utils.answer(
             message,
             f"{reply}\n{''.join(core_)}{''.join(plain_)}{''.join(inline_)}{no_commands_}{partial_load}{umod_turn}{um_tn}",
