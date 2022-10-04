@@ -1,3 +1,12 @@
+__version__ = (1, 0, 0)
+
+#            ▀█▀ █ █ █▀█ █▀▄▀█ ▄▀█ █▀
+#             █  █▀█ █▄█ █ ▀ █ █▀█ ▄█  
+#             https://t.me/netuzb
+#
+# 🔒 Licensed under the GNU AGPLv3
+# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
+
 import difflib
 import inspect
 import logging
@@ -336,7 +345,7 @@ class MHelpMod(loader.Module):
             else ""
         )
 
-        umod_turn = f"\n\n🌉 <b>1.4.2 modification oʻrnida qabul qilamiza.</b>"
+        umod_turn = f"\n\n💌 <b>1.4.2 modification oʻrnida qabul qilamiza.</b>"
         um_tn = "\n<i>— Never gonna give you up...</i>"
         await utils.answer(
             message,
