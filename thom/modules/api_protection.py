@@ -1,13 +1,9 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
+#            ▀█▀ █ █ █▀█ █▀▄▀█ ▄▀█ █▀
+#             █  █▀█ █▄█ █ ▀ █ █▀█ ▄█  
+#             https://t.me/netuzb
 #
-# 🔒      Licensed under the GNU AGPLv3
+# 🔒 Licensed under the GNU AGPLv3
 # 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
-# meta pic: https://img.icons8.com/emoji/344/shield-emoji.png
-# meta developer: @hikariatama
 
 import asyncio
 import io
@@ -16,12 +12,10 @@ import logging
 import time
 
 from telethon.tl.types import Message
-
 from .. import loader, utils
 from ..inline.types import InlineCall
 
 logger = logging.getLogger(__name__)
-
 
 @loader.tds
 class APIRatelimiterMod(loader.Module):
