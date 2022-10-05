@@ -211,8 +211,8 @@ class CoreMod(loader.Module):
         return f"{str(chatid)}.{module}" if module else chatid
 
     @loader.command(ru_doc="Показать версию Thom")
-    async def thom(self, message: Message):
-        """Get Thom version"""
+    async def thomcmd(self, message: Message):
+        """Thom boʻyicha qisqa maʼlumot"""
         await utils.answer(
             message,
             self.strings("thom").format(
@@ -228,7 +228,7 @@ class CoreMod(loader.Module):
                     )
                 )
                 if self._client.thom_me.premium and CUSTOM_EMOJIS
-                else "🌘 <b>Thom userbot</b>",
+                else "💌 <b>Thom userbot</b>",
                 *version.__version__,
                 utils.get_commit_url(),
                 f"{telethon.__version__} #{telethon.tl.alltlobjects.LAYER}",
