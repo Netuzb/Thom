@@ -60,7 +60,7 @@ class StartHelloMod(loader.Module):
         if not self.get("thom_asosiy_info"):
             await self.inline.bot.send_photo(
                 self._tg_id,
-                photo="https://te.legra.ph/file/eca95f4035898ee660212.jpg",
+                photo="https://te.legra.ph/file/d2cce260768911161a340.jpg",
                 caption=self.strings("thom_asosiy_info"),
                 reply_markup=self.inline.generate_markup(
                     utils.chunks(
