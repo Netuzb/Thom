@@ -1,36 +1,9 @@
-#    Friendly Telegram (telegram userbot)
-#    Copyright (C) 2018-2021 The Authors
-
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import os
-
 import telethon
 from telethon.tl.types import Message
 from telethon.extensions.html import CUSTOM_EMOJIS
-
 from .. import loader, main, translations, utils, version
 from ..inline.types import InlineCall
-
 
 @loader.tds
 class CoreMod(loader.Module):
@@ -97,10 +70,10 @@ class CoreMod(loader.Module):
         ),
         "thom": (
             "{}\n\n<emoji document_id=5406931726184225260>🧐</emoji>"
-            " <b>Version: {}.{}.{}</b>\n<emoji"
+            " <b>Versiya: {}.{}.{}</b>\n<emoji"
             " document_id=6318902906900711458>🧱</emoji> <b>Build:"
             " </b><i>{}</i>\n\n<emoji document_id=5233346091725888979>⚙️</emoji> <b>Thom-TL: </b><i>{}</i>\n\n<emoji document_id=5454182070156794055>⌨️</emoji>"
-            " <b>Developer: t.me/hikariatama</b>"
+            " <b>Bosh asoschi: t.me/netuzb</b>"
         ),
         "check_url": (
             "<emoji document_id=5436162517686557387>🚫</emoji> <b>You need to specify"
@@ -203,7 +176,7 @@ class CoreMod(loader.Module):
             " <b>Версия: {}.{}.{}</b>\n<emoji"
             " document_id=6318902906900711458>🧱</emoji> <b>Сборка:"
             " </b><i>{}</i>\n\n<emoji document_id=5233346091725888979>⚙️</emoji> <b>Thom-TL: </b><i>{}</i>\n\n<emoji document_id=5454182070156794055>⌨️</emoji>"
-            " <b>Developer: t.me/hikariatama</b>"
+            " <b>Главный основатель: t.me/netuzb</b>"
         ),
         "check_url": (
             "<emoji document_id=5436162517686557387>🚫</emoji> <b>Укажи правильную"
