@@ -14,22 +14,6 @@ class CoreMod(loader.Module):
         "too_many_args": (
             "<emoji document_id=5436162517686557387>🚫</emoji> <b>Too many args</b>"
         ),
-        "blacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Chat {} blacklisted'
-            " from userbot</b>"
-        ),
-        "unblacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Chat {}'
-            " unblacklisted from userbot</b>"
-        ),
-        "user_blacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>User {} blacklisted'
-            " from userbot</b>"
-        ),
-        "user_unblacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>User {}'
-            " unblacklisted from userbot</b>"
-        ),
         "what_prefix": "❓ <b>What should the prefix be set to?</b>",
         "prefix_incorrect": (
             "<emoji document_id=5436162517686557387>🚫</emoji> <b>Prefix must be one"
@@ -116,22 +100,6 @@ class CoreMod(loader.Module):
         "too_many_args": (
             "<emoji document_id=5436162517686557387>🚫</emoji> <b>Слишком много"
             " аргументов</b>"
-        ),
-        "blacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Чат {} добавлен в'
-            " черный список юзербота</b>"
-        ),
-        "unblacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Чат {} удален из'
-            " черного списка юзербота</b>"
-        ),
-        "user_blacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Пользователь {}'
-            " добавлен в черный список юзербота</b>"
-        ),
-        "user_unblacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Пользователь {}'
-            " удален из черного списка юзербота</b>"
         ),
         "what_prefix": "❓ <b>А какой префикс ставить то?</b>",
         "prefix_incorrect": (
@@ -243,7 +211,7 @@ class CoreMod(loader.Module):
         return f"{str(chatid)}.{module}" if module else chatid
 
     @loader.command(ru_doc="Показать версию Thom")
-    async def thomcmd(self, message: Message):
+    async def thom(self, message: Message):
         """Get Thom version"""
         await utils.answer(
             message,
@@ -270,80 +238,6 @@ class CoreMod(loader.Module):
                 if version.branch == "main"
                 else self.strings("unstable").format(version.branch)
             ),
-        )
-
-    @loader.command(ru_doc="[чат] [модуль] - Отключить бота где-либо")
-    async def blacklist(self, message: Message):
-        """[chat_id] [module] - Blacklist the bot from operating somewhere"""
-        chatid = await self.blacklistcommon(message)
-
-        self._db.set(
-            main.__name__,
-            "blacklist_chats",
-            self._db.get(main.__name__, "blacklist_chats", []) + [chatid],
-        )
-
-        await utils.answer(message, self.strings("blacklisted").format(chatid))
-
-    @loader.command(ru_doc="[чат] - Включить бота где-либо")
-    async def unblacklist(self, message: Message):
-        """<chat_id> - Unblacklist the bot from operating somewhere"""
-        chatid = await self.blacklistcommon(message)
-
-        self._db.set(
-            main.__name__,
-            "blacklist_chats",
-            list(set(self._db.get(main.__name__, "blacklist_chats", [])) - {chatid}),
-        )
-
-        await utils.answer(message, self.strings("unblacklisted").format(chatid))
-
-    async def getuser(self, message: Message):
-        try:
-            return int(utils.get_args(message)[0])
-        except (ValueError, IndexError):
-            reply = await message.get_reply_message()
-
-            if reply:
-                return reply.sender_id
-
-            return message.to_id.user_id if message.is_private else False
-
-    @loader.command(ru_doc="[пользователь] - Запретить пользователю выполнять команды")
-    async def blacklistuser(self, message: Message):
-        """[user_id] - Prevent this user from running any commands"""
-        user = await self.getuser(message)
-
-        if not user:
-            await utils.answer(message, self.strings("who_to_blacklist"))
-            return
-
-        self._db.set(
-            main.__name__,
-            "blacklist_users",
-            self._db.get(main.__name__, "blacklist_users", []) + [user],
-        )
-
-        await utils.answer(message, self.strings("user_blacklisted").format(user))
-
-    @loader.command(ru_doc="[пользователь] - Разрешить пользователю выполнять команды")
-    async def unblacklistuser(self, message: Message):
-        """[user_id] - Allow this user to run permitted commands"""
-        user = await self.getuser(message)
-
-        if not user:
-            await utils.answer(message, self.strings("who_to_unblacklist"))
-            return
-
-        self._db.set(
-            main.__name__,
-            "blacklist_users",
-            list(set(self._db.get(main.__name__, "blacklist_users", [])) - {user}),
-        )
-
-        await utils.answer(
-            message,
-            self.strings("user_unblacklisted").format(user),
         )
 
     @loader.owner
@@ -438,27 +332,6 @@ class CoreMod(loader.Module):
         await utils.answer(
             message,
             self.strings("alias_removed").format(utils.escape_html(alias)),
-        )
-
-    @loader.command(ru_doc="[ссылка на пак] - Изменить внешний пак перевода")
-    async def dllangpackcmd(self, message: Message):
-        """[link to a langpack | empty to remove] - Change Thom translate pack (external)"""
-        args = utils.get_args_raw(message)
-
-        if not args:
-            self._db.set(translations.__name__, "pack", False)
-            await self.translator.init()
-            await utils.answer(message, self.strings("lang_removed"))
-            return
-
-        if not utils.check_url(args):
-            await utils.answer(message, self.strings("check_url"))
-            return
-
-        self._db.set(translations.__name__, "pack", args)
-        success = await self.translator.init()
-        await utils.answer(
-            message, self.strings("pack_saved" if success else "check_pack")
         )
 
     @loader.command(ru_doc="[языки] - Изменить стандартный язык")
