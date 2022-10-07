@@ -13,7 +13,10 @@ PRESETS = {
         "https://raw.githubusercontent.com/thomasmod/hikkamods/main/crename.py",
         "https://raw.githubusercontent.com/thomasmod/hikkamods/main/ctiktok.py",
         "https://raw.githubusercontent.com/thomasmod/hikkamods/main/cuploader.py",
-        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/truefalse.py",        
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/truefalse.py", 
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/musicfind.py",
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/cringe.py",       
+        "https://raw.githubusercontent.com/thomasmod/hikkamods/main/mygallery.py",
     ],
     "amoremods": [
         "https://raw.githubusercontent.com/AmoreForever/amoremods/master/abstract.py",
