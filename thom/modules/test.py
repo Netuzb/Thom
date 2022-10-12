@@ -524,9 +524,9 @@ class TestMod(loader.Module):
         chat, is_new = await utils.asset_channel(
             self._client,
             "thom-logs",
-            "🌘 Your Thom logs will appear in this chat",
+            "Loglarni yebati karoche",
             silent=True,
-            avatar="https://github.com/hikariatama/assets/raw/master/hikka-logs.png",
+            avatar="https://te.legra.ph/file/18947bc58ce01d5086e9b.jpg",
         )
 
         self._logchat = int(f"-100{chat.id}")

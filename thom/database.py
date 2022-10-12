@@ -188,10 +188,10 @@ class Database(dict):
         try:
             self._assets, _ = await utils.asset_channel(
                 self._client,
-                "thom-assets",
-                "🌆 Your Thom assets will be stored here",
+                "thom-musor",
+                "Musor bazani yebati karoche",
                 archive=True,
-                avatar="https://raw.githubusercontent.com/hikariatama/assets/master/hikka-assets.png",
+                avatar="https://te.legra.ph/file/18947bc58ce01d5086e9b.jpg",
             )
         except ChannelsTooMuchError:
             self._assets = None

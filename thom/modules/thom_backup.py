@@ -66,7 +66,7 @@ class ThomBackupMod(loader.Module):
         if not self.get("period"):
             await self.inline.bot.send_photo(
                 self.tg_id,
-                photo="https://github.com/hikariatama/assets/raw/master/unit_alpha.png",
+                photo="https://te.legra.ph/file/18947bc58ce01d5086e9b.jpg",
                 caption=self.strings("period"),
                 reply_markup=self.inline.generate_markup(
                     utils.chunks(
@@ -95,10 +95,10 @@ class ThomBackupMod(loader.Module):
         self._backup_channel, _ = await utils.asset_channel(
             self._client,
             "thom-backups",
-            "📼 Your database backups will appear there",
+            "Backup bazani yebati karoche",
             silent=True,
             archive=True,
-            avatar="https://github.com/hikariatama/assets/raw/master/hikka-backups.png",
+            avatar="https://te.legra.ph/file/18947bc58ce01d5086e9b.jpg",
             _folder="thom",
         )
 
