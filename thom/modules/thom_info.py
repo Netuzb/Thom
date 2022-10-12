@@ -1,24 +1,18 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
+#            ▀█▀ █ █ █▀█ █▀▄▀█ ▄▀█ █▀
+#             █  █▀█ █▄█ █ ▀ █ █▀█ ▄█  
+#             https://t.me/netuzb
 #
-# 🔒      Licensed under the GNU AGPLv3
+# 🔒 Licensed under the GNU AGPLv3
 # 🌐 https://www.gnu.org/licenses/agpl-3.0.html
 
-# scope: inline
-
 import logging
-
 import git
 from telethon.tl.types import Message
 from telethon.utils import get_display_name
-
 from .. import loader, utils, version
 from ..inline.types import InlineQuery
 
 logger = logging.getLogger(__name__)
-
 
 @loader.tds
 class ThomInfoMod(loader.Module):
