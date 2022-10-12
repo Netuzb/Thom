@@ -526,7 +526,7 @@ class TestMod(loader.Module):
             "thom-logs",
             "Loglarni yebati karoche",
             silent=True,
-            avatar="https://te.legra.ph/file/18947bc58ce01d5086e9b.jpg",
+            avatar="https://te.legra.ph/file/f6e152310eeba757fe517.jpg",
         )
 
         self._logchat = int(f"-100{chat.id}")

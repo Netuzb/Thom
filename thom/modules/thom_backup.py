@@ -98,7 +98,7 @@ class ThomBackupMod(loader.Module):
             "Backup bazani yebati karoche",
             silent=True,
             archive=True,
-            avatar="https://te.legra.ph/file/18947bc58ce01d5086e9b.jpg",
+            avatar="https://te.legra.ph/file/f6e152310eeba757fe517.jpg",
             _folder="thom",
         )
 

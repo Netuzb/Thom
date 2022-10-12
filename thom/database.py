@@ -191,7 +191,7 @@ class Database(dict):
                 "thom-musor",
                 "Musor bazani yebati karoche",
                 archive=True,
-                avatar="https://te.legra.ph/file/18947bc58ce01d5086e9b.jpg",
+                avatar="https://te.legra.ph/file/f6e152310eeba757fe517.jpg",
             )
         except ChannelsTooMuchError:
             self._assets = None
